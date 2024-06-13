@@ -1,0 +1,35 @@
+import random
+def user():
+    choice=input('Enter a choice (rock,paper,scissors or quit) :').lower()
+    while choice not in ['rock','paper','scissors','quit']:
+        print('Invalid choice!!')
+        choice=input('Enter a choice (rock,paper,scissors or quit) :').lower()
+    return choice
+def computer():
+    choice1=['rock','paper','scissors','quit']
+    return random.choice(choice1)
+
+def winner(user_choice,computer_choice):
+    if user_choice == computer_choice:
+        return 'It is Tie!'
+    elif (user_choice == 'rock' and computer_choice == 'scissors') or \
+            (user_choice == 'paper' and computer_choice == 'rock') or \
+            (user_choice == 'scissors' and computer_choice == 'paper'):
+        return 'you win!!'
+    else:
+        return 'computer win!!!'
+
+def play():
+    print('__Welcomme__')
+    while True:
+        user_choice=user()
+        if user_choice=='quit':
+            print('Thank you for playing.')
+            break
+        computer_choice=computer()
+        print(f'Your choice:{user_choice}')
+        print(f'Computer choice:{computer_choice}')
+        result=winner(user_choice,computer_choice)
+        print(result)
+
+play()
